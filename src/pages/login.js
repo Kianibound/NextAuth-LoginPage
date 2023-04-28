@@ -4,7 +4,9 @@ import Link from "next/link";
 import styles from "../styles/Form.module.css";
 import Image from "next/image";
 import { HiAtSymbol, HiFingerPrint } from "react-icons/hi";
+import { useState } from "react";
 const login = () => {
+  const [show, setShow] = useState(false);
   return (
     <Layout>
       <Head>
@@ -35,18 +37,21 @@ const login = () => {
           </div>
           <div className={styles.input_group}>
             <input
-              type="password"
+              type={`${show ? "text" : "password"}`}
               name="password"
               placeholder="password"
               className={styles.input_text}
             />
-            <span className="icon flex items-center px-4">
+            <span
+              className="icon flex items-center px-4"
+              onClick={() => setShow(!show)}
+            >
               <HiFingerPrint size={20} />
             </span>
           </div>
 
           {/* login buttons */}
-          <div className={styles.button}>
+          <div className={styles.button_custom}>
             <button type="submit">Login</button>
           </div>
           <div className={styles.button}>
