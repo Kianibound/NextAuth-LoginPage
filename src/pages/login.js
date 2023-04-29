@@ -10,7 +10,7 @@ const login = () => {
   return (
     <Layout>
       <Head>
-        <title>Login Page</title>
+        <title>Login</title>
       </Head>
 
       <section className="w-3/4 mx-auto flex flex-col gap-5">

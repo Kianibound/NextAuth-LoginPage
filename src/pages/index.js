@@ -1,41 +1,66 @@
-import Image from "next/image";
 import Head from "next/head";
-
-function findRepeatedNumber(numbers) {
-  // Create an empty object to store the count of each number
-  var count = {};
-
-  // Loop through the array of numbers
-  for (var i = 0; i < numbers.length; i++) {
-    // Get the current number from the array
-    var currentNumber = numbers[i];
-
-    // If we've already seen this number, it's a repeated number, so return it
-    if (count[currentNumber] !== undefined) {
-      return currentNumber;
-    }
-
-    // Otherwise, add the current number to the count object
-    count[currentNumber] = 1;
-    console.log(count);
-  }
-
-  // If we get to the end of the loop without finding a repeated number, return "not found"
-  return "not found";
-}
-var numbers = [1, 2, 3, 4, 2, 5];
-var repeatedNumber = findRepeatedNumber(numbers);
-console.log(repeatedNumber); // Output: 2
+import Image from "next/image";
+import styles from "../styles/Home.module.css";
+import Link from "next/link";
+import { useState } from "react";
 
 export default function Home() {
+  const [session, setSession] = useState(false);
+
   return (
-    <>
+    <div className={styles.container}>
       <Head>
         <title>Home Page</title>
       </Head>
-      <main>
-        <h1 className="text-3xl">Home Page</h1>
-      </main>
-    </>
+
+      {session ? User() : Guest()}
+    </div>
+  );
+}
+
+// Guest
+function Guest() {
+  return (
+    <main className="container mx-auto text-center py-20">
+      <h3 className="text-4xl font-bold">Guest Homepage</h3>
+
+      <div className="flex justify-center">
+        <Link
+          href={"/login"}
+          className="mt-5 px-10 py-1 rounded-sm bg-indigo-500 text-gray-50"
+        >
+          Sign In
+        </Link>
+      </div>
+    </main>
+  );
+}
+
+// Authorize User
+function User() {
+  return (
+    <main className="container mx-auto text-center py-20">
+      <h3 className="text-4xl font-bold">Authorize User Homepage</h3>
+
+      <div className="details">
+        <h5>Ehsan</h5>
+        <h5>ehsan@ehsan.com</h5>
+      </div>
+
+      <div className="flex justify-center">
+        <button className="mt-5 px-10 py-1 rounded-sm bg-indigo-500 ">
+          Sign Out
+        </button>
+      </div>
+
+      <div className="flex justify-center">
+        <Link
+          href={"/profile"}
+          className="mt-5 px-10 py-1 rounded-sm bg-indigo-500 text-gray-50"
+        >
+          Profile Page
+        </Link>
+      </div>
+    </main>
   );
 }

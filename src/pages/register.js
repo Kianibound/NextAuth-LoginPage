@@ -2,7 +2,6 @@ import Head from "next/head";
 import Layout from "../layout/layout";
 import Link from "next/link";
 import styles from "../styles/Form.module.css";
-import Image from "next/image";
 import { HiAtSymbol, HiFingerPrint, HiOutlineUser } from "react-icons/hi";
 import { useState } from "react";
 
@@ -84,7 +83,7 @@ export default function Register() {
 
         {/* bottom */}
         <p className="text-center text-gray-400 ">
-          Have an account?{" "}
+          Have an account?
           <Link href={"/login"} className="text-blue-700">
             Sign In
           </Link>
